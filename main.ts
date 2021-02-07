@@ -10,8 +10,8 @@ basic.forever(function () {
     7,
     false
     )
-    seq += 1
-    basic.pause(5000)
+    basic.pause(3000)
     bluetooth.stopAdvertising()
-    basic.pause(5000)
+    basic.pause(57000)
+    seq += 1
 })
