@@ -1,5 +1,7 @@
 let seq = 0
 let _namespace = 1634558569
+let interval = 60000
+let next_time = input.runningTime() + interval
 basic.forever(function () {
     if (seq == 256) {
         seq = 0
@@ -7,11 +9,12 @@ basic.forever(function () {
     bluetooth.advertiseUid(
     _namespace,
     seq * 16777216 + input.temperature(),
-    7,
+    0,
     false
     )
-    basic.pause(3000)
+    basic.pause(2000)
     bluetooth.stopAdvertising()
-    basic.pause(57000)
+    basic.pause(next_time - input.runningTime())
+    next_time = next_time + interval
     seq += 1
 })
